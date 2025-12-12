@@ -169,15 +169,17 @@ def top_categories(
 
     return result
 
-
 def compute_quality_flags(summary: DatasetSummary, missing_df: pd.DataFrame) -> Dict[str, Any]:
     """
     Простейшие эвристики «качества» данных:
     - слишком много пропусков;
     - подозрительно мало строк;
-    и т.п.
+    - константные колонки;
+    - много нулей в числовых колонках.
     """
     flags: Dict[str, Any] = {}
+
+    #  СТАРЫЕ ФЛАГИ 
     flags["too_few_rows"] = summary.n_rows < 100
     flags["too_many_columns"] = summary.n_cols > 100
 
@@ -185,18 +187,50 @@ def compute_quality_flags(summary: DatasetSummary, missing_df: pd.DataFrame) -> 
     flags["max_missing_share"] = max_missing_share
     flags["too_many_missing"] = max_missing_share > 0.5
 
-    # Простейший «скор» качества
+    # НОВЫЙ ФЛАГ №1: константные колонки 
+    # Колонка считается константной, если unique <= 1
+    constant_columns = [col.name for col in summary.columns if col.unique <= 1]
+    flags["has_constant_columns"] = len(constant_columns) > 0
+    flags["constant_columns_count"] = len(constant_columns)
+    flags["constant_column_names"] = constant_columns
+
+    # НОВЫЙ ФЛАГ №2: много нулей в числовых колонках 
+    # Эвристика: числовая колонка, у которой min == 0
+    # и мало уникальных значений относительно числа ненулевых.
+    high_zero_columns: list[str] = []
+    for col in summary.columns:
+        if col.is_numeric and col.non_null > 0 and col.min is not None:
+            if col.min == 0:
+                # Чем меньше unique / non_null, тем больше повторяющихся значений (часто нули).
+                # Если уникальных значений не больше 70% от числа ненулевых, считаем колонку "с нулями".
+                if col.unique <= int(col.non_null * 0.7):
+                    high_zero_columns.append(col.name)
+
+    flags["has_many_zero_values"] = len(high_zero_columns) > 0
+    flags["high_zero_columns"] = len(high_zero_columns)
+    flags["high_zero_column_names"] = high_zero_columns
+
+    #  ОБНОВЛЁННЫЙ quality_score (старое + новые штрафы) 
     score = 1.0
+
+    # Старые штрафы
     score -= max_missing_share  # чем больше пропусков, тем хуже
-    if summary.n_rows < 100:
+    if flags["too_few_rows"]:
         score -= 0.2
-    if summary.n_cols > 100:
+    if flags["too_many_columns"]:
         score -= 0.1
+
+    # Новые штрафы
+    if flags["has_constant_columns"]:
+        score -= 0.15
+    if flags["has_many_zero_values"]:
+        score -= 0.15
 
     score = max(0.0, min(1.0, score))
     flags["quality_score"] = score
 
     return flags
+
 
 
 def flatten_summary_for_print(summary: DatasetSummary) -> pd.DataFrame:
