@@ -59,6 +59,20 @@ def overview(
     typer.echo("\nКолонки:")
     typer.echo(summary_df.to_string(index=False))
 
+@app.command()
+def head(
+    path: str = typer.Argument(..., help="Путь к CSV-файлу."),
+    n: int = typer.Option(5, "--n", "-n", help="Сколько строк показать."),
+    sep: str = typer.Option(",", help="Разделитель в CSV."),
+    encoding: str = typer.Option("utf-8", help="Кодировка файла."),
+) -> None:
+    """
+    Показать первые N строк датасета.
+    """
+    df = _load_csv(Path(path), sep=sep, encoding=encoding)
+    n = max(1, n)
+    typer.echo(df.head(n).to_string(index=False))
+
 
 @app.command()
 def report(

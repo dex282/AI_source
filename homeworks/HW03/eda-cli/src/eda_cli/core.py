@@ -255,3 +255,88 @@ def flatten_summary_for_print(summary: DatasetSummary) -> pd.DataFrame:
             }
         )
     return pd.DataFrame(rows)
+
+import pandas as pd
+
+from eda_cli.core import DatasetSummary, ColumnSummary, compute_quality_flags
+
+
+def test_compute_quality_flags_constant_and_zeros():
+    # Маленький датафрейм с константой и нулями
+    df = pd.DataFrame({
+        "id": [1, 2, 3, 4],
+        "constant": [5, 5, 5, 5],      # константная колонка
+        "zeros": [0, 0, 0, 10],        # много нулей
+    })
+
+    summary = DatasetSummary(
+        n_rows=len(df),
+        n_cols=len(df.columns),
+        columns=[
+            ColumnSummary(
+                name="id",
+                dtype=str(df["id"].dtype),
+                non_null=4,
+                missing=0,
+                missing_share=0.0,
+                unique=df["id"].nunique(),
+                example_values=["1", "2", "3"],
+                is_numeric=True,
+                min=float(df["id"].min()),
+                max=float(df["id"].max()),
+                mean=float(df["id"].mean()),
+                std=float(df["id"].std()),
+            ),
+            ColumnSummary(
+                name="constant",
+                dtype=str(df["constant"].dtype),
+                non_null=4,
+                missing=0,
+                missing_share=0.0,
+                unique=1,                      # все значения одинаковые
+                example_values=["5"],
+                is_numeric=True,
+                min=5.0,
+                max=5.0,
+                mean=5.0,
+                std=0.0,
+            ),
+            ColumnSummary(
+                name="zeros",
+                dtype=str(df["zeros"].dtype),
+                non_null=4,
+                missing=0,
+                missing_share=0.0,
+                unique=df["zeros"].nunique(),  # 2 значения: 0 и 10
+                example_values=["0", "10"],
+                is_numeric=True,
+                min=float(df["zeros"].min()),
+                max=float(df["zeros"].max()),
+                mean=float(df["zeros"].mean()),
+                std=float(df["zeros"].std()),
+            ),
+        ],
+    )
+
+    # Таблица пропусков (во всех колонках без пропусков)
+    missing_df = pd.DataFrame(
+        {
+            "missing_count": [0, 0, 0],
+            "missing_share": [0.0, 0.0, 0.0],
+        },
+        index=["id", "constant", "zeros"],
+    )
+
+    flags = compute_quality_flags(summary, missing_df)
+
+    # Проверяем, что сработали НОВЫЕ эвристики
+    assert flags["has_constant_columns"] is True
+    assert flags["constant_columns_count"] == 1
+    assert "constant" in flags["constant_column_names"]
+
+    assert flags["has_many_zero_values"] is True
+    assert flags["high_zero_columns"] >= 1
+    assert "zeros" in flags["high_zero_column_names"]
+
+    # quality_score должен быть в диапазоне [0, 1]
+    assert 0.0 <= flags["quality_score"] <= 1.0
