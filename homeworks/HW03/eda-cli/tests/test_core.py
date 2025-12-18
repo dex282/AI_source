@@ -57,5 +57,28 @@ def test_correlation_and_top_categories():
     top_cats = top_categories(df, max_columns=5, top_k=2)
     assert "city" in top_cats
     city_table = top_cats["city"]
-    assert "value" in city_table.columns
+    assert "value" in city_table.columns   
     assert len(city_table) <= 2
+# НОВЫЙ ТЕСТ ДЛЯ HW03 (добавьте в конец файла)
+def test_compute_quality_flags_constant_and_zeros():
+    """Тест новых эвристик: константные колонки + много нулей"""
+    df = pd.DataFrame({
+        "id": [1, 2, 3, 4],
+        "constant": [5, 5, 5, 5],     # константная колонка
+        "zeros": [0, 0, 0, 10],       # много нулей (3/4)
+    })
+    
+    summary = summarize_dataset(df)
+    missing_df = missing_table(df)
+    flags = compute_quality_flags(summary, missing_df)
+    
+    # Проверка новых эвристик из core.py
+    assert flags["has_constant_columns"] is True
+    assert flags["constant_columns_count"] == 1
+    assert "constant" in flags["constant_column_names"]
+    
+    assert flags["has_many_zero_values"] is True
+    assert flags["high_zero_columns"] >= 1
+    assert "zeros" in flags["high_zero_column_names"]
+    
+    assert 0.0 <= flags["quality_score"] <= 1.0

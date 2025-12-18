@@ -145,12 +145,16 @@ def report(
         f.write(f"Строк: **{summary.n_rows}**, столбцов: **{summary.n_cols}**\n\n")
 
         # Качество данных
+               
         f.write("## Качество данных (эвристики)\n\n")
         f.write(f"- Оценка качества: **{quality_flags['quality_score']:.2f}**\n")
         f.write(f"- Макс. доля пропусков по колонке: **{quality_flags['max_missing_share']:.2%}**\n")
         f.write(f"- Слишком мало строк: **{quality_flags['too_few_rows']}**\n")
         f.write(f"- Слишком много колонок: **{quality_flags['too_many_columns']}**\n")
-        f.write(f"- Слишком много пропусков: **{quality_flags['too_many_missing']}**\n\n")
+        f.write(f"- Слишком много пропусков: **{quality_flags['too_many_missing']}**\n")
+        f.write(f"- Постоянные колонки: **{quality_flags['constant_columns_count']}** ({', '.join(quality_flags['constant_column_names'] or [])})\n")
+        f.write(f"- Колонки с нулями: **{quality_flags['high_zero_columns']}** ({', '.join(quality_flags['high_zero_column_names'] or [])})\n\n")
+
 
         # Параметры анализа
         f.write("## Параметры анализа\n\n")
