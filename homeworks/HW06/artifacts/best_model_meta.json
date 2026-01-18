@@ -1,0 +1,12 @@
+{
+    "best_model_name": "RandomForestClassifier",
+    "best_model_params": {
+        "model__max_features": "sqrt",
+        "model__n_estimators": 200
+    },
+    "test_metrics": {
+        "accuracy": 0.8888888888888888,
+        "f1": 0.7502497502497503,
+        "roc_auc": 0.9350731639654084
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "DecisionTreeClassifier": {
+        "best_params": {
+            "model__max_depth": 15,
+            "model__min_samples_leaf": 50
+        },
+        "best_score_cv": 0.8287372159201599
+    },
+    "RandomForestClassifier": {
+        "best_params": {
+            "model__max_features": "sqrt",
+            "model__n_estimators": 200
+        },
+        "best_score_cv": 0.9245953051071145
+    },
+    "HistGradientBoostingClassifier": {
+        "best_params": {
+            "model__learning_rate": 0.1,
+            "model__max_iter": 200
+        },
+        "best_score_cv": 0.9286315925189446
+    }
+}
