@@ -1,0 +1,356 @@
+{
+    "ds1": {
+        "KMeans": [
+            {
+                "k": 2,
+                "silhouette": 0.5185159566612942,
+                "davies_bouldin": 0.6853295219054459,
+                "calinski_harabasz": 11786.95462267153
+            },
+            {
+                "k": 3,
+                "silhouette": 0.4009962020008473,
+                "davies_bouldin": 0.9646042500366256,
+                "calinski_harabasz": 10446.638111140073
+            },
+            {
+                "k": 4,
+                "silhouette": 0.3861247073864801,
+                "davies_bouldin": 1.1603490405338497,
+                "calinski_harabasz": 9427.499744196683
+            },
+            {
+                "k": 5,
+                "silhouette": 0.3573792314972228,
+                "davies_bouldin": 1.2737186882233407,
+                "calinski_harabasz": 8301.205993638541
+            },
+            {
+                "k": 6,
+                "silhouette": 0.360300220167962,
+                "davies_bouldin": 1.1822563058722353,
+                "calinski_harabasz": 7333.387619484842
+            },
+            {
+                "k": 7,
+                "silhouette": 0.3234714297918599,
+                "davies_bouldin": 1.194162012066225,
+                "calinski_harabasz": 6823.00784381894
+            },
+            {
+                "k": 8,
+                "silhouette": 0.26765632251633087,
+                "davies_bouldin": 1.314180401015265,
+                "calinski_harabasz": 6460.801051738207
+            },
+            {
+                "k": 9,
+                "silhouette": 0.2521536086355957,
+                "davies_bouldin": 1.343964489505401,
+                "calinski_harabasz": 6255.217145281708
+            },
+            {
+                "k": 10,
+                "silhouette": 0.26028553757977063,
+                "davies_bouldin": 1.2769845526246602,
+                "calinski_harabasz": 6084.5030865672
+            },
+            {
+                "k": 11,
+                "silhouette": 0.26871400898939946,
+                "davies_bouldin": 1.214110863627697,
+                "calinski_harabasz": 5898.163563797596
+            },
+            {
+                "k": 12,
+                "silhouette": 0.27135057162221266,
+                "davies_bouldin": 1.1562638766664033,
+                "calinski_harabasz": 5784.863430516168
+            },
+            {
+                "k": 13,
+                "silhouette": 0.2770507842732696,
+                "davies_bouldin": 1.1411854947778086,
+                "calinski_harabasz": 5716.7016395187775
+            },
+            {
+                "k": 14,
+                "silhouette": 0.28571191350569397,
+                "davies_bouldin": 1.086926375720219,
+                "calinski_harabasz": 5744.579410097937
+            },
+            {
+                "k": 15,
+                "silhouette": 0.2922073388674838,
+                "davies_bouldin": 1.0409225717749933,
+                "calinski_harabasz": 5729.707844145998
+            }
+        ]
+    },
+    "ds2": {
+        "KMeans": [
+            {
+                "k": 2,
+                "silhouette": 0.3068610017701601,
+                "davies_bouldin": 1.3234721699867644,
+                "calinski_harabasz": 3573.3933329348392
+            },
+            {
+                "k": 3,
+                "silhouette": 0.27004522856451274,
+                "davies_bouldin": 1.2226592908750664,
+                "calinski_harabasz": 3082.272074544635
+            },
+            {
+                "k": 4,
+                "silhouette": 0.2514805632951281,
+                "davies_bouldin": 1.2998187751155688,
+                "calinski_harabasz": 2915.565357085485
+            },
+            {
+                "k": 5,
+                "silhouette": 0.25211519070471305,
+                "davies_bouldin": 1.2138337452137868,
+                "calinski_harabasz": 2703.5897042630368
+            },
+            {
+                "k": 6,
+                "silhouette": 0.25981972898842143,
+                "davies_bouldin": 1.159521129561412,
+                "calinski_harabasz": 2571.0909314132814
+            },
+            {
+                "k": 7,
+                "silhouette": 0.2536432556085209,
+                "davies_bouldin": 1.1723338222249964,
+                "calinski_harabasz": 2453.500966352129
+            }
+        ],
+        "DBSCAN": [
+            {
+                "noise_ratio": 0.295375,
+                "silhouette": -0.40824444923935044,
+                "davies_bouldin": 0.9155986943658047,
+                "calinski_harabasz": 41.897643910363236,
+                "eps": 0.1,
+                "min_samples": 3
+            },
+            {
+                "noise_ratio": 0.47925,
+                "silhouette": -0.12911645090965934,
+                "davies_bouldin": 0.8764380693070116,
+                "calinski_harabasz": 158.77342657514544,
+                "eps": 0.1,
+                "min_samples": 5
+            },
+            {
+                "noise_ratio": 0.68825,
+                "silhouette": 0.28210739347728575,
+                "davies_bouldin": 0.8054217078258343,
+                "calinski_harabasz": 1125.3158542367055,
+                "eps": 0.1,
+                "min_samples": 7
+            },
+            {
+                "noise_ratio": 0.08725,
+                "silhouette": -0.09863468386381938,
+                "davies_bouldin": 0.6758487918783755,
+                "calinski_harabasz": 156.71625719936517,
+                "eps": 0.2,
+                "min_samples": 3
+            },
+            {
+                "noise_ratio": 0.102,
+                "silhouette": -0.03565145217273759,
+                "davies_bouldin": 0.7924076487866871,
+                "calinski_harabasz": 377.85757728768266,
+                "eps": 0.2,
+                "min_samples": 5
+            },
+            {
+                "noise_ratio": 0.1185,
+                "silhouette": -0.06809772744064493,
+                "davies_bouldin": 0.7961795689210571,
+                "calinski_harabasz": 342.31583005673946,
+                "eps": 0.2,
+                "min_samples": 7
+            },
+            {
+                "noise_ratio": 0.05925,
+                "silhouette": -0.3006196073675922,
+                "davies_bouldin": 0.5795984678176962,
+                "calinski_harabasz": 16.826952397182385,
+                "eps": 0.30000000000000004,
+                "min_samples": 3
+            },
+            {
+                "noise_ratio": 0.072375,
+                "silhouette": 0.08522505460147263,
+                "davies_bouldin": 0.5896990784253007,
+                "calinski_harabasz": 21.95165666653018,
+                "eps": 0.30000000000000004,
+                "min_samples": 5
+            },
+            {
+                "noise_ratio": 0.079125,
+                "silhouette": -1.0,
+                "davies_bouldin": -1.0,
+                "calinski_harabasz": -1.0,
+                "eps": 0.30000000000000004,
+                "min_samples": 7
+            },
+            {
+                "noise_ratio": 0.041875,
+                "silhouette": -0.22521335509556673,
+                "davies_bouldin": 0.6618887820258728,
+                "calinski_harabasz": 24.579547014898626,
+                "eps": 0.4,
+                "min_samples": 3
+            },
+            {
+                "noise_ratio": 0.061875,
+                "silhouette": 0.13486343378295018,
+                "davies_bouldin": 0.6041569055438107,
+                "calinski_harabasz": 31.396114775294762,
+                "eps": 0.4,
+                "min_samples": 5
+            },
+            {
+                "noise_ratio": 0.067625,
+                "silhouette": 0.2639603499677021,
+                "davies_bouldin": 0.7066203643620681,
+                "calinski_harabasz": 22.49859379629893,
+                "eps": 0.4,
+                "min_samples": 7
+            },
+            {
+                "noise_ratio": 0.0255,
+                "silhouette": -0.06250267848105012,
+                "davies_bouldin": 0.8208734181589101,
+                "calinski_harabasz": 40.08410935388643,
+                "eps": 0.5,
+                "min_samples": 3
+            },
+            {
+                "noise_ratio": 0.045,
+                "silhouette": -0.05824642298525936,
+                "davies_bouldin": 0.7896110332641587,
+                "calinski_harabasz": 49.82201468663914,
+                "eps": 0.5,
+                "min_samples": 5
+            },
+            {
+                "noise_ratio": 0.059375,
+                "silhouette": 0.2881537211211776,
+                "davies_bouldin": 0.7585414099017315,
+                "calinski_harabasz": 56.39958982485585,
+                "eps": 0.5,
+                "min_samples": 7
+            }
+        ]
+    },
+    "ds4": {
+        "KMeans": [
+            {
+                "k": 2,
+                "silhouette": 0.2532321906303577,
+                "davies_bouldin": 1.635731317502957,
+                "calinski_harabasz": 3126.3280834314655
+            },
+            {
+                "k": 3,
+                "silhouette": 0.29360178916161106,
+                "davies_bouldin": 1.4666404940276456,
+                "calinski_harabasz": 3355.1367295098216
+            },
+            {
+                "k": 4,
+                "silhouette": 0.37555437664245706,
+                "davies_bouldin": 1.164396444688146,
+                "calinski_harabasz": 3907.022658109873
+            },
+            {
+                "k": 5,
+                "silhouette": 0.44450333491002514,
+                "davies_bouldin": 0.975904265483746,
+                "calinski_harabasz": 5087.688517434967
+            },
+            {
+                "k": 6,
+                "silhouette": 0.4202762837699743,
+                "davies_bouldin": 1.009677008254225,
+                "calinski_harabasz": 5371.6181254668945
+            },
+            {
+                "k": 7,
+                "silhouette": 0.3782653302270003,
+                "davies_bouldin": 1.6592935472930683,
+                "calinski_harabasz": 4566.924336936665
+            },
+            {
+                "k": 8,
+                "silhouette": 0.3110470224598233,
+                "davies_bouldin": 2.104849245577069,
+                "calinski_harabasz": 3990.988974490439
+            },
+            {
+                "k": 9,
+                "silhouette": 0.265131828655647,
+                "davies_bouldin": 2.4603717089410555,
+                "calinski_harabasz": 3559.693953771096
+            },
+            {
+                "k": 10,
+                "silhouette": 0.1830057567080295,
+                "davies_bouldin": 2.7882363555445724,
+                "calinski_harabasz": 3223.8503564717166
+            },
+            {
+                "k": 11,
+                "silhouette": 0.20509664973643635,
+                "davies_bouldin": 2.7258459895619866,
+                "calinski_harabasz": 2938.402437800305
+            },
+            {
+                "k": 12,
+                "silhouette": 0.14509362033308446,
+                "davies_bouldin": 2.965726765410007,
+                "calinski_harabasz": 2724.2329699624684
+            },
+            {
+                "k": 13,
+                "silhouette": 0.07748730372499867,
+                "davies_bouldin": 3.167179046185766,
+                "calinski_harabasz": 2544.793852558319
+            },
+            {
+                "k": 14,
+                "silhouette": 0.07474130772157775,
+                "davies_bouldin": 3.1061097353291487,
+                "calinski_harabasz": 2374.8450183278674
+            },
+            {
+                "k": 15,
+                "silhouette": 0.07300680145214408,
+                "davies_bouldin": 3.022556865783713,
+                "calinski_harabasz": 2240.83281679711
+            }
+        ],
+        "Agglomerative": [
+            {
+                "k": 5,
+                "linkage": "ward",
+                "silhouette": 0.44450333491002514,
+                "davies_bouldin": 0.975904265483746,
+                "calinski_harabasz": 5087.688517434967
+            },
+            {
+                "k": 5,
+                "linkage": "complete",
+                "silhouette": 0.44450333491002514,
+                "davies_bouldin": 0.9759042654837462,
+                "calinski_harabasz": 5087.688517434967
+            }
+        ]
+    }
+}
